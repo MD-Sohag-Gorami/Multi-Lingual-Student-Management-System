@@ -11,8 +11,8 @@ using Multi_lingual_student_management_system.Data;
 namespace Multi_lingual_student_management_system.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221012144340_added entity")]
-    partial class addedentity
+    [Migration("20221014110909_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -50,7 +50,10 @@ namespace Multi_lingual_student_management_system.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CourseTearcherId")
+                    b.Property<string>("CourseTeacher")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TeacherId")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
@@ -59,7 +62,7 @@ namespace Multi_lingual_student_management_system.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CourseTearcherId");
+                    b.HasIndex("TeacherId");
 
                     b.ToTable("Courses");
                 });
@@ -173,13 +176,13 @@ namespace Multi_lingual_student_management_system.Migrations
 
             modelBuilder.Entity("Multi_lingual_student_management_system.Models.Course", b =>
                 {
-                    b.HasOne("Multi_lingual_student_management_system.Models.Teacher", "CourseTearcher")
+                    b.HasOne("Multi_lingual_student_management_system.Models.Teacher", "Teacher")
                         .WithMany("TakenCourses")
-                        .HasForeignKey("CourseTearcherId")
+                        .HasForeignKey("TeacherId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("CourseTearcher");
+                    b.Navigation("Teacher");
                 });
 
             modelBuilder.Entity("Multi_lingual_student_management_system.Models.Localization", b =>

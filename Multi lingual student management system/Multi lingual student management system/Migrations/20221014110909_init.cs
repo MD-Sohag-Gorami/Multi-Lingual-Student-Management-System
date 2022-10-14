@@ -4,7 +4,7 @@
 
 namespace Multi_lingual_student_management_system.Migrations
 {
-    public partial class addedentity : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -80,14 +80,15 @@ namespace Multi_lingual_student_management_system.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Code = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CourseTearcherId = table.Column<int>(type: "int", nullable: false)
+                    TeacherId = table.Column<int>(type: "int", nullable: false),
+                    CourseTeacher = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Courses", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Courses_Teachers_CourseTearcherId",
-                        column: x => x.CourseTearcherId,
+                        name: "FK_Courses_Teachers_TeacherId",
+                        column: x => x.TeacherId,
                         principalTable: "Teachers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -118,9 +119,9 @@ namespace Multi_lingual_student_management_system.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Courses_CourseTearcherId",
+                name: "IX_Courses_TeacherId",
                 table: "Courses",
-                column: "CourseTearcherId");
+                column: "TeacherId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CourseStudent_StudentsId",

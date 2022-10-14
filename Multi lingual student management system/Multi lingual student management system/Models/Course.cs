@@ -12,8 +12,10 @@ namespace Multi_lingual_student_management_system.Models
         public int Id { get; set; }
         public string Title { get; set; }
         public string Code { get; set; }
-        public Teacher CourseTearcher { get; set; }
-        public IList<Student> Students{ get; set; }
+        public int TeacherId { get; set; }
+        public string? CourseTeacher { get; set; }
+        public virtual Teacher? Teacher { get; set; }
+        public IList<Student>? Students{ get; set; }
 
 
     }

@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Multi_lingual_student_management_system.Data;
+using Multi_lingual_student_management_system.Factories;
+using Multi_lingual_student_management_system.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +10,13 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(
     builder.Configuration.GetConnectionString("DefalutConnection")));
+
+//builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<ILanguageService, LanguageService>();
+builder.Services.AddScoped<ITeacherService, TeacherService>();
+builder.Services.AddScoped<ICourseService, CourseService>();
+builder.Services.AddScoped<ITeacherModelFactory, TeacherModelFactory>();
+builder.Services.AddScoped<ICourseModelFactory, CourseModelFactory>();
 
 var app = builder.Build();
 
