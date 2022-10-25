@@ -10,17 +10,20 @@ namespace Multi_lingual_student_management_system.Controllers
         #region Ctro
         private readonly ILanguageService _language;
         private readonly IStudentModelFactory _studentFactory;
+        private readonly ICourseService _course;
         private readonly IStudentService _student;
 
         public StudentController(ILanguageService language,
                                
                                  IStudentService student, 
-                                 IStudentModelFactory studentFactory)
+                                 IStudentModelFactory studentFactory,
+                                 ICourseService course)
         {
             _language = language;
            
             _student = student;
             _studentFactory = studentFactory;
+            _course = course;
         }
         #endregion
         #region Methods
@@ -44,11 +47,70 @@ namespace Multi_lingual_student_management_system.Controllers
         {
             if(ModelState.IsValid)
             {
-                await _student.CreateStudentAsync(model);
+                await _student.InsertStudentAsync(model);
                 return RedirectToAction("Index");
             }
             return View(model);
         }
+
+        public async Task<IActionResult> Detail(int? id)
+        {
+            if(id == null || id == 0) return NotFound();
+            var model = await _studentFactory.PrepareStudentByIdAsync(id.Value);
+            return View(model);
+        }
+        [HttpGet]
+        public async Task<IActionResult>  EnrollCourse(int id)
+        {
+
+            var courseList = await _course.GetAllCourseAsync();
+            if(courseList == null) return NotFound();
+            List<EnrollCourseModel> enrollCourse = new List<EnrollCourseModel>();
+            foreach (var course in courseList)
+            {
+                var viewModel=(new EnrollCourseModel()
+                {
+                    CourseId = course.Id,
+                    CourseCode = course.Code,
+                    CourseTeacher = course.CourseTeacher,
+                    CourseTitle = course.Title,
+                });
+
+                var check = await _student.IsEnrolledCourseAsync(course.Id, id);
+                if (check)
+                {
+                    viewModel.IsSelected = true;
+                }
+                else viewModel.IsSelected = false;
+                enrollCourse.Add(viewModel);
+                
+            }
+            ViewBag.studentId = id;
+            return View(enrollCourse);
+        }
+        [HttpPost]
+        public async Task<IActionResult> EnrollCourse(int id,List<EnrollCourseModel> viewModel)
+        {
+
+            await _student.EnrollCouresToStudenAsync(viewModel, id);
+
+
+            return RedirectToAction("Detail", new { id = id });
+
+        }
+
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null) return NotFound();
+            return View();
+        }
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if(id == null) return NotFound();
+            await _student.DeleteStudentByIdAsync(id.Value);
+            return RedirectToAction("Index");
+        }
+
         #endregion
     }
 }

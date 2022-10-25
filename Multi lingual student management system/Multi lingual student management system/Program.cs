@@ -16,9 +16,11 @@ builder.Services.AddScoped<ILanguageService, LanguageService>();
 builder.Services.AddScoped<ITeacherService, TeacherService>();
 builder.Services.AddScoped<ICourseService, CourseService>();
 builder.Services.AddScoped<IStudentService, StudentService>();
+builder.Services.AddScoped<ILocalizationService, LocalizationService>();
 builder.Services.AddScoped<ITeacherModelFactory, TeacherModelFactory>();
 builder.Services.AddScoped<ICourseModelFactory, CourseModelFactory>();
 builder.Services.AddScoped<IStudentModelFactory, StudentModelFactory>();
+
 
 
 var app = builder.Build();

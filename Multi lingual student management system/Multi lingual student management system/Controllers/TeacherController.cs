@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Multi_lingual_student_management_system.Factories;
+using Multi_lingual_student_management_system.Models;
 using Multi_lingual_student_management_system.Services;
 using Multi_lingual_student_management_system.ViewModel;
 
@@ -27,15 +28,16 @@ namespace Multi_lingual_student_management_system.Controllers
         [HttpGet]
         public async Task<IActionResult> Create()
         {
+            var viewModel = await _teacherFactroy.PrepareTeacherModelAsync(new TeacherModel());
 
-            return View();
+            return View(viewModel);
         }
         [HttpPost]
         public async Task<IActionResult> Create(TeacherModel model)
         {
             if (ModelState.IsValid)
             {
-                await _teacherService.CreateTeacherAsync(model);
+                await _teacherService.InsertTeacherAsync(model);
                 return RedirectToAction("Index");
             }
 
@@ -49,6 +51,12 @@ namespace Multi_lingual_student_management_system.Controllers
             if (model == null) return NotFound();
 
             return View(model);
+        }
+
+        public async Task<IActionResult> Delete(int? id)
+        {
+            await _teacherService.DeleteTeacherByIdAsync(id.Value);
+            return RedirectToAction("Index");
         }
     }
 }

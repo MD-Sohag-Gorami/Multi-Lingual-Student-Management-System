@@ -7,6 +7,6 @@ namespace Multi_lingual_student_management_system.Models
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
-
+        public bool IsDefault { get; set; }
     }
 }

@@ -6,16 +6,16 @@ namespace Multi_lingual_student_management_system.ViewModel
     {
         public TeacherModel()
         {
-            AvailableLanguage = new List<LanguageModel>();
+            TranslationLanguage = new List<SelectListItem>();
             TakenCourses = new List<CourseModel>();
         }
         public int Id { get; set; }
         public string Name { get; set; }
-        public int LanguageId { get; set; }
-        public string? LanguageName { get; set; }
+        public int Language { get; set; }
+        public string? Translation { get; set; }
         public string? Designation { get; set; }
         public IList<CourseModel> TakenCourses { get; set; }
-        public IList<LanguageModel> AvailableLanguage { get; set; }
+        public IList<SelectListItem> TranslationLanguage { get; set; }
 
     }
 }

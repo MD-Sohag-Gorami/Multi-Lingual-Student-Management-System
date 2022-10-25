@@ -9,15 +9,21 @@ namespace Multi_lingual_student_management_system.Factories
     {
         private readonly IStudentService _student;
         private readonly ILanguageService _language;
+        private readonly ICourseService _course;
+        private readonly ILocalizationService _localization;
 
         #region Ctor
         public StudentModelFactory(IStudentService student,
-                                   ILanguageService language)
+                                   ILanguageService language,
+                                   ICourseService course,
+                                    ILocalizationService localization)
         {
-     
-          
+
+
             _student = student;
             _language = language;
+            _course = course;
+            _localization = localization;
         }
         #endregion
         #region Methods
@@ -40,17 +46,32 @@ namespace Multi_lingual_student_management_system.Factories
         public async Task<List<StudentModel>> PrepareAllStudentAsync()
         {
             var students = await _student.GetAllStudentAsync();
+            var languages = await _language.GetAllLanguageAsync();
+            int defaultLanguageId = 0;
+            for (int i = 0; i < languages.Count; i++)
+            {
+                if (languages[i].IsDefault == true)
+                {
+                    defaultLanguageId = languages[i].Id;
+                    break;
+                }
+            }
+
             List<StudentModel> studentList = new List<StudentModel>();
 
             foreach (var student in students)
             {
 
-                StudentModel ViewModel = new StudentModel()
+                var ViewModel = new StudentModel()
                 {
                     Id = student.Id,
-                    Name = student.Name,
                     Roll = student.Roll,
                 };
+
+                var model = await _localization.GetLocalizationByIdAsync(defaultLanguageId, "Student", student.Id, "Name");
+                if (model != null) ViewModel.Name = model.Value;
+                else ViewModel.Name = student.Name;
+
                 studentList.Add(ViewModel);
             }
 
@@ -65,12 +86,22 @@ namespace Multi_lingual_student_management_system.Factories
 
             if (student == null) return new StudentModel();
 
-            StudentModel ViewModel = new StudentModel()
+            List<Course> courseList = new List<Course>();
+
+            foreach (var course in student.EnrolledCourses)
+            {
+                courseList.Add(course);
+            }
+
+            var ViewModel = new StudentModel()
             {
                 Id = student.Id,
                 Name = student.Name,
                 Roll = student.Roll,
+                EnrolledCourses = student.EnrolledCourses,
+
             };
+
 
             return ViewModel;
 

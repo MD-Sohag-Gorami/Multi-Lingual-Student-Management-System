@@ -9,5 +9,6 @@ namespace Multi_lingual_student_management_system.Services
         Task<LanguageModel> GetLanguageByIdAsync(int? id);
         Task UpdateLanguageAsync(LanguageModel viewModel);
         Task CreateLanguageAsync(LanguageModel viewModel);
+        Task SetDefaultLanguaeAsync(int id);
     }
 }

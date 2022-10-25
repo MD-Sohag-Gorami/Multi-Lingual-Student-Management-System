@@ -32,5 +32,19 @@ namespace Multi_lingual_student_management_system.Controllers
             
             return View(model);
         }
+        [HttpGet]
+        public async Task<IActionResult> Check(int? id)
+        {
+
+            await _language.SetDefaultLanguaeAsync(id.Value);
+            return RedirectToAction("Index", "Home", new { area = "" });
+        }
+
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null) return NotFound();
+            await _language.DeleteLanguageByIdAsync(id.Value);
+            return RedirectToAction("Index");
+        }
     }
 }

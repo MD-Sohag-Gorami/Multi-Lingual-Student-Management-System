@@ -54,6 +54,7 @@ namespace Multi_lingual_student_management_system.Factories
                     Title = course.Title,
                     TeacherId = course.TeacherId,
                     CourseTeacher = course.CourseTeacher,
+                    Code = course.Code,
                 };
                 courseList.Add(ViewModel);
             }

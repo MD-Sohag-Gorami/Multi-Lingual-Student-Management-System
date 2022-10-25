@@ -4,7 +4,7 @@ namespace Multi_lingual_student_management_system.Services
 {
     public interface ITeacherService
     {
-        Task CreateTeacherAsync(TeacherModel viewModel);
+        Task InsertTeacherAsync(TeacherModel viewModel);
         Task DeleteTeacherByIdAsync(int id);
         Task<List<Teacher>> GetAllTeacherAsync();
         Task<Teacher> GetTeacherByIdAsync(int id);

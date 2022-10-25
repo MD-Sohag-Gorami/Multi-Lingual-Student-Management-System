@@ -1,5 +1,5 @@
 ﻿@model List<TeacherModel>
-<h1>Language Page</h1>
+<h1>Teacher Page</h1>
 <a class="btn btn-primary" asp-area="" asp-controller="Teacher" asp-action="Create">Create</a>
 
 <table class="table">
@@ -26,20 +26,20 @@
         @foreach (var teacher in Model)
         {
             <tr>
-                <td>
+                <td width="40%">
                     @teacher.Name
                 </td>
-                 <td>
+                 <td width="60%">
                     @teacher.Designation
                 </td>
-                <td>
+                <td width="15%">
                     <a asp-controller="Teacher" asp-action="Edit" asp-route-id="@teacher.Id"> Edit </a>
-                </td>
-                <td>
+                </td >
+                <td width="15%">
                     <a asp-controller="Teacher" asp-action="Delete" asp-route-id="@teacher.Id"> Delete </a>
 
                 </td>
-                <td>
+                <td width="15%">
                     <a asp-controller="Teacher" asp-action="Detail" asp-route-id="@teacher.Id"> Details </a>
                 </td>
             </tr>

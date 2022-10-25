@@ -42,11 +42,19 @@ namespace Multi_lingual_student_management_system.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _course.CreateCourseAsync(model);
+                await _course.InsertCourseAsync(model);
                 return RedirectToAction("Index");
             }
 
             return View(model);
         }
+
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null) return NotFound();
+            await _course.DeleteCourseByIdAsync(id.Value);
+            return RedirectToAction("Index");
+        }
     }
+    
 }

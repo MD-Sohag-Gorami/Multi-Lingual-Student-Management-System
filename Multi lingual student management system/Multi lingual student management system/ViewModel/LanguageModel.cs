@@ -10,5 +10,7 @@ namespace Multi_lingual_student_management_system.ViewModel
         [DisplayName("Name : ")]
         [Required]
         public string Name { get; set; }
+
+        public bool IsDefault { get; set; }
     }
 }

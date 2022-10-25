@@ -38,9 +38,15 @@ namespace Multi_lingual_student_management_system.Services
         }
         public async Task DeleteCourseByIdAsync(int id)
         {
+            var course = await _db.Courses.FindAsync(id);
+            if (course != null)
+            {
+                _db.Courses.Remove(course);
+                await _db.SaveChangesAsync();
 
+            }
         }
-        public async Task CreateCourseAsync(CourseModel viewModel)
+        public async Task InsertCourseAsync(CourseModel viewModel)
         {
             var teacher = await _teacher.GetTeacherByIdAsync(viewModel.TeacherId);
             var model = new Course()
