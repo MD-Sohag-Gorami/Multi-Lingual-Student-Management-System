@@ -1,0 +1,17 @@
+E:\Project\Multi Lingual Student Management System\Multi lingual student management system\Repository\obj\Debug\net6.0\Repository.csproj.AssemblyReference.cache
+E:\Project\Multi Lingual Student Management System\Multi lingual student management system\Repository\obj\Debug\net6.0\Repository.GeneratedMSBuildEditorConfig.editorconfig
+E:\Project\Multi Lingual Student Management System\Multi lingual student management system\Repository\obj\Debug\net6.0\Repository.AssemblyInfoInputs.cache
+E:\Project\Multi Lingual Student Management System\Multi lingual student management system\Repository\obj\Debug\net6.0\Repository.AssemblyInfo.cs
+E:\Project\Multi Lingual Student Management System\Multi lingual student management system\Repository\obj\Debug\net6.0\Repository.csproj.CoreCompileInputs.cache
+E:\Project\Multi lingual student management system\Multi lingual student management system\Repository\bin\Debug\net6.0\Repository.deps.json
+E:\Project\Multi lingual student management system\Multi lingual student management system\Repository\bin\Debug\net6.0\Repository.runtimeconfig.json
+E:\Project\Multi lingual student management system\Multi lingual student management system\Repository\bin\Debug\net6.0\Repository.dll
+E:\Project\Multi lingual student management system\Multi lingual student management system\Repository\bin\Debug\net6.0\Repository.pdb
+E:\Project\Multi lingual student management system\Multi lingual student management system\Repository\bin\Debug\net6.0\Domain.dll
+E:\Project\Multi lingual student management system\Multi lingual student management system\Repository\bin\Debug\net6.0\Domain.pdb
+E:\Project\Multi lingual student management system\Multi lingual student management system\Repository\obj\Debug\net6.0\Repository.csproj.CopyComplete
+E:\Project\Multi lingual student management system\Multi lingual student management system\Repository\obj\Debug\net6.0\Repository.dll
+E:\Project\Multi lingual student management system\Multi lingual student management system\Repository\obj\Debug\net6.0\refint\Repository.dll
+E:\Project\Multi lingual student management system\Multi lingual student management system\Repository\obj\Debug\net6.0\Repository.pdb
+E:\Project\Multi lingual student management system\Multi lingual student management system\Repository\obj\Debug\net6.0\Repository.genruntimeconfig.cache
+E:\Project\Multi lingual student management system\Multi lingual student management system\Repository\obj\Debug\net6.0\ref\Repository.dll

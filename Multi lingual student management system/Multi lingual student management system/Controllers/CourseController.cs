@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Multi_lingual_student_management_system.Factories;
 using Multi_lingual_student_management_system.Services;
 using Multi_lingual_student_management_system.ViewModel;
