@@ -1,6 +1,4 @@
 ﻿
-using System.Web.Mvc;
-
 namespace Multi_lingual_student_management_system.ViewModel
 {
     public class CourseModel
